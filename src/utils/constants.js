@@ -6,22 +6,27 @@ export  const MAIN_MENU=[
     {
         name:"Feeds",
         icon:Users,
-        isActive:true
+        isActive:true,
+        link:"/feed"
     },
     {
         name:"Connections",
         icon:Users,
-        isActive:true
+        isActive:true,
+        link:"/connections"
+
     },
     {
         name:"Chat",
         icon:MessageSquare,
-        isActive:true
+        isActive:true,
+        link:"#"
     },
     {
         name:"Projects",
         icon:FolderOpen,
-        isActive:true
+        isActive:true,
+        link:"#"
     },
 ]
 

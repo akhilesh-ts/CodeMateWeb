@@ -8,6 +8,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { MAIN_MENU } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 export function NavMain() {
   return (
@@ -23,11 +24,13 @@ export function NavMain() {
           >
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={item.name}>
-                  {item.icon && <item.icon />}
-                  <span>{item.name}</span>
-                  <ChevronRight className="ml-auto " />
-                </SidebarMenuButton>
+                <Link to={item?.link}>
+                  <SidebarMenuButton tooltip={item.name}>
+                    {item.icon && <item.icon />}
+                    <span>{item.name}</span>
+                    <ChevronRight className="ml-auto" />
+                  </SidebarMenuButton>
+                </Link>
               </CollapsibleTrigger>
             </SidebarMenuItem>
           </Collapsible>
