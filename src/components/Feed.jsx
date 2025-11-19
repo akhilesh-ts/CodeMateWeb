@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addFeeds } from "../utils/slice/feedSlice";
-import Card from "./Card";
+
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -23,15 +23,12 @@ const Feed = () => {
   };
 
   useEffect(() => {
-    console.log("useeffect called");
     fetchFeed();
   }, []);
 
   return (
     <>
-      <div className="grid grid-cols-3 py-6">
-        {feedData && feedData.map((user) => <Card key={user?._id} name={user?.firstName} />)}
-      </div>
+      feed
     </>
   );
 };

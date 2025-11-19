@@ -38,7 +38,7 @@ const Body = () => {
           <NavBar />
         </header> */}
 
-        <main className="grow grid place-items-center px-4">
+        <main className="grow grid place-items-center px-4 bg-[#171A1FFF]">
           <Outlet />
         </main>
       </div>

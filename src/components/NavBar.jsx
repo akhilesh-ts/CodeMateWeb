@@ -30,7 +30,7 @@ const NavBar = () => {
     <>
       <div className="navbar bg-base-300 shadow-sm px-8">
         <div className="flex-1">
-          <Link to="/" className="btn btn-ghost text-xl">
+          <Link to="/app" className="btn btn-ghost text-xl">
             Code Mate
           </Link>
         </div>

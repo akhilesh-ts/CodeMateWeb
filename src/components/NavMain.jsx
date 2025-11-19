@@ -2,7 +2,6 @@ import { ChevronRight } from "lucide-react";
 import { Collapsible, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -12,23 +11,23 @@ import { Link } from "react-router-dom";
 
 export function NavMain() {
   return (
-    <SidebarGroup>
-      <SidebarGroupLabel>Menu</SidebarGroupLabel>
+    <SidebarGroup className="mt-6">
+      
       <SidebarMenu>
         {MAIN_MENU.map((item) => (
           <Collapsible
-            key={item.title}
+            key={item.name}
             asChild
             defaultOpen={item.isActive}
             className="group/collapsible"
           >
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
-                <Link to={item?.link}>
-                  <SidebarMenuButton tooltip={item.name}>
-                    {item.icon && <item.icon />}
-                    <span>{item.name}</span>
-                    <ChevronRight className="ml-auto" />
+                <Link  to={item?.link}>
+                  <SidebarMenuButton className="hover:bg-[#1E2128FF] active:bg-[#1E2128FF] cursor-pointer" tooltip={item.name} >
+                    {item.icon && <item.icon className="text-white" />}
+                    <span className="text-white">{item.name}</span>
+                    <ChevronRight className="ml-auto text-white" />
                   </SidebarMenuButton>
                 </Link>
               </CollapsibleTrigger>

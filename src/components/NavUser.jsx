@@ -23,32 +23,65 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../utils/constants";
+import { removeUser } from "../utils/slice/userSlice";
+import { removeFeeds } from "../utils/slice/feedSlice";
 
-export function NavUser({user}) {
+export function NavUser({ user }) {
   const { isMobile } = useSidebar();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+  const hadleLogout = async () => {
+    try {
+      const res = await axios.post(
+        BASE_URL + "/logout",
+        {},
+        { withCredentials: true }
+      );
+
+      if (res.status == 200) {
+        dispatch(removeUser());
+        dispatch(removeFeeds());
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <SidebarMenu>
+    <SidebarMenu className="bg-[#1E2128FF]  rounded-lg">
       <SidebarMenuItem>
-        <DropdownMenu>
+        <DropdownMenu className="hover:bg-[#1E2128FF] active:bg-[#1E2128FF] ">
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              className="data-[state=open]:text-sidebar-accent-foreground hover:bg-[#1E2128] active:bg-[#1E2128] focus:bg-[#1E2128] focus-visible:bg-[#1E2128] data-[state=open]:bg-[#1E2128] data-[state=selected]:bg-[#1E2128] data-[state=active]:bg-[#1E2128] data-[state=current]:bg-[#1E2128] text-white"
             >
               <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">AK</AvatarFallback>
+                <AvatarImage src={user.photoUrl} alt={user.firstName} />
+                <AvatarFallback className="rounded-lg bg-[#5E5EEDFF] text-white">
+                  AK
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+                <span className="truncate font-medium text-white">
+                  {user.firstName}
+                </span>
+                <span className="truncate text-xs text-white">
+                  {user.email}
+                </span>
               </div>
-              <ChevronsUpDown className="ml-auto size-4" />
+              <ChevronsUpDown className="ml-auto size-4 text-[#5E5EEDFF]" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg bg-[#1E2128FF] border-0 text-white font-light"
             side={isMobile ? "bottom" : "right"}
             align="end"
             sideOffset={4}
@@ -56,40 +89,42 @@ export function NavUser({user}) {
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
+                  <AvatarImage src={user.photoUrl} alt={user.firstName} />
                   <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+                  <span className="truncate font-normal">{user.firstName}</span>
+                  <span className="truncate text-xs font-normal">
+                    {user.email}
+                  </span>
                 </div>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <Sparkles />
+                <Sparkles className="text-[#5E5EEDFF]"/>
                 Upgrade to Pro
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <BadgeCheck />
+                <BadgeCheck className="text-[#5E5EEDFF]" />
                 Account
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <CreditCard />
+                <CreditCard className="text-[#5E5EEDFF]"/>
                 Billing
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Bell />
+                <Bell className="text-[#5E5EEDFF]"/>
                 Notifications
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogOut />
+            <DropdownMenuItem onClick={hadleLogout}>
+              <LogOut className="text-[#5E5EEDFF]" />
               Log out
             </DropdownMenuItem>
           </DropdownMenuContent>

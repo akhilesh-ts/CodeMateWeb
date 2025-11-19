@@ -11,43 +11,42 @@ import {
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-};
+export function AppSidebar() {
+  const LoggedInUser=useSelector((store)=>store?.user)
 
-export function AppSidebar({ ...props }) {
   return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader className="bg-blue-950 ">
+    <Sidebar collapsible="icon" className=" border-blue-950">
+      <SidebarHeader className="bg-[#171a1fff]">
         <SidebarMenu>
-          <Link to="/">
+          <Link to="/app">
             <SidebarMenuButton
               size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer"
+              className="bg-transparent hover:bg-[#1E2128] active:bg-[#1E2128]  cursor-pointer "
             >
-              <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                <CodeXml className="size-4" />
+              <div className="bg-[#5E5EEDFF] text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                <CodeXml className="size-4 font-bold" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">Code Mate</span>
-                <span className="truncate text-xs">Chat. Code. Create</span>
+                <span className="truncate font-bold text-lg text-[#5E5EEDFF]">
+                  Code Mate
+                </span>
+                <span className="truncate text-xs text-white font-light ">
+                  Chat. Code. Create
+                </span>
               </div>
             </SidebarMenuButton>
           </Link>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent className="bg-blue-950">
+      <SidebarContent className="bg-[#171a1fff]">
         <NavMain />
       </SidebarContent>
-      <SidebarFooter className="bg-blue-950">
-        <NavUser user={data.user} />
+      <SidebarFooter className="bg-[#171a1fff]">
+       {LoggedInUser&&<NavUser user={LoggedInUser} />} 
       </SidebarFooter>
-      <SidebarRail />
+      <SidebarRail  />
     </Sidebar>
   );
 }
