@@ -20,7 +20,7 @@ export function AppSidebar() {
     <Sidebar collapsible="icon" className=" border-blue-950">
       <SidebarHeader className="bg-[#171a1fff]">
         <SidebarMenu>
-          <Link to="/app">
+          <Link to="/app/Home">
             <SidebarMenuButton
               size="lg"
               className="bg-transparent hover:bg-[#1E2128] active:bg-[#1E2128]  cursor-pointer "

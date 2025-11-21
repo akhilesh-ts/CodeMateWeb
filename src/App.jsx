@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Body from "./components/Body";
 import Login from "./components/Login";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import Feed from "./components/feed";
+import Request from "./components/Request";
 import Profile from "./components/Profile";
 import Dashboard from "./components/Dashboard";
 import Overview from "./components/Overview";
 import Connections from "./components/Connections";
 import Home from "./components/Home";
 import { Toaster } from "@/components/ui/sonner";
+import Discover from "./components/Discover";
 function App() {
   return (
     <>
@@ -22,8 +22,9 @@ function App() {
             <Route path="/" element={<Home />} />
 
             <Route path="/app" element={<Dashboard />}>
-              <Route path="/app/overview" element={<Overview />} />
-              <Route path="/app/feed" element={<Feed />} />
+              <Route path="/app/Home" element={<Overview />} />
+              <Route path="/app/Requests" element={<Request />} />
+              <Route path="/app/Discover" element={<Discover />} />
               <Route path="/app/profile" element={<Profile />} />
               <Route path="/app/connections" element={<Connections />} />
             </Route>

@@ -28,7 +28,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/slice/userSlice";
-import { removeFeeds } from "../utils/slice/feedSlice";
+import { removeFeeds } from "../utils/slice/discoverSlice";
+import { removeRequest } from "../utils/slice/requestSlice";
 
 export function NavUser({ user }) {
   const { isMobile } = useSidebar();
@@ -47,6 +48,7 @@ export function NavUser({ user }) {
       if (res.status == 200) {
         dispatch(removeUser());
         dispatch(removeFeeds());
+        dispatch(removeRequest())
         navigate("/login");
       }
     } catch (error) {

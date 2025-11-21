@@ -4,16 +4,22 @@ export const BASE_URL="http://localhost:7777"
 
 export  const MAIN_MENU=[
      {
-        name:"Overview",
+        name:"Home",
         icon:Users,
         isActive:true,
-        link:"/app/overview"
+        link:"/app/Home"
     },
     {
-        name:"Feeds",
+        name:"Requests",
         icon:Users,
         isActive:true,
-        link:"/app/feed"
+        link:"/app/Requests"
+    },
+    {
+        name:"Discover",
+        icon:Users,
+        isActive:true,
+        link:"/app/Discover"
     },
     {
         name:"Connections",
@@ -35,4 +41,8 @@ export  const MAIN_MENU=[
         link:"#"
     },
 ]
+
+
+
+
 

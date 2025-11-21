@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const feedSlice = createSlice({
-  name: "feed",
+const discoverSlice = createSlice({
+  name: "discover",
   initialState: null,
   reducers: {
     addFeeds: (state, action) => action.payload,
@@ -9,6 +9,6 @@ const feedSlice = createSlice({
   },
 });
 
-export const { addFeeds, removeFeeds } = feedSlice.actions;
+export const { addFeeds, removeFeeds } = discoverSlice.actions;
 
-export default feedSlice.reducer;
+export default discoverSlice.reducer;

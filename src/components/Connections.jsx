@@ -1,8 +1,31 @@
+import axios from "axios";
+import ConnectionCard from "./ConnectionCard";
+import { BASE_URL } from "../utils/constants";
+import { useEffect, useState } from "react";
+
 const Connections = () => {
+  const [connections, setConnections] = useState([]);
+  const fetchConnections = async () => {
+    try {
+      const res = await axios.get(
+        BASE_URL + "/user/connections",
+       
+        { withCredentials: true }
+      );
+       console.log(res.data)
+      setConnections(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchConnections();
+  }, []);
+
   return (
-    <div className="w-full h-screen text-3xl grid grid-cols-6 gap-10">
-      <div className="bg-yellow-400 rounded-2xl col-span-4">connection</div>
-      <div className="bg-orange-600 rounded-2xl col-span-2">top picks</div>
+    <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 p-5">
+      {connections && connections.map((item) => <ConnectionCard  key={item?._id} user={item}/>)}
     </div>
   );
 };

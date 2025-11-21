@@ -39,8 +39,7 @@ function LoginForm() {
       );
 
       dispatch(adduser(res.data));
-      navigate("/app/overview");
-    
+      navigate("/app/Home");
     } catch (err) {
       toast.error(err.response.data, {
         description: "Please try again",
