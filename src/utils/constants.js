@@ -1,6 +1,6 @@
 import {Users,MessageSquare,FolderOpen } from "lucide-react"
 
-export const BASE_URL="http://localhost:7777"
+export const BASE_URL="/api"
 
 export  const MAIN_MENU=[
      {
