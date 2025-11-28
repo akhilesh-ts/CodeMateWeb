@@ -41,6 +41,7 @@ function LoginForm() {
       dispatch(adduser(res.data));
       navigate("/app/Home");
     } catch (err) {
+      console.log(err)
       toast.error(err.response.data, {
         description: "Please try again",
       });
@@ -134,7 +135,7 @@ function LoginForm() {
                 <FieldDescription className="text-left py-3 text-[#DEE1E6FF]">
                   Don&apos;t have an account?{" "}
                   <Link
-                    to="#"
+                    to="/signup"
                     className="text-[#5E5EEDFF] hover:text-[#5E5EEDFF] cursor-pointer"
                   >
                     Sign up

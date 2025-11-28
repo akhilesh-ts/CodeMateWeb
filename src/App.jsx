@@ -10,6 +10,8 @@ import Connections from "./components/Connections";
 import Home from "./components/Home";
 import { Toaster } from "@/components/ui/sonner";
 import Discover from "./components/Discover";
+import Signup from "./page/Signup"
+
 function App() {
   return (
     <>
@@ -17,7 +19,7 @@ function App() {
         <Toaster richColors />
         <BrowserRouter basename="/">
           <Routes>
-            <Route path="/signup" element={<div>Sign up</div>} />
+            <Route path="/signup" element={<Signup/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Home />} />
 
