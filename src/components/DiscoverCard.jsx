@@ -15,8 +15,8 @@ const DiscoverCard = ({ user, onRemove }) => {
         onRemove(userId);
         if (status === "Interested") {
           toast.success(`Request successfully send to ${user?.firstName}`);
-        }else if(status==="Ignore"){
-            toast.error(`You skipped ${user?.firstName} `)
+        } else if (status === "Ignore") {
+          toast.error(`You skipped ${user?.firstName} `);
         }
       }
 
@@ -34,22 +34,15 @@ const DiscoverCard = ({ user, onRemove }) => {
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent" />
-        <div className="absolute bottom-3 left-3 right-3 space-y-3">
-          <h2 className="text-lg font-bold font-grotesk">
-            {user?.firstName} <span className="font-light">{user?.age}</span>
+        <div className="absolute bottom-3 left-3 right-3 ">
+          <h2 className="text-lg font-bold font-grotesk ">
+            {user?.firstName.toUpperCase()}{" "}
+            <span className="font-light">{user?.age ? user?.age : " "}</span>
           </h2>
-          <div className="flex flex-wrap gap-2">
-            {user?.skills?.map((skill, idx) => (
-              <span
-                key={idx}
-                className="px-2 py-0.5 text-[10px] bg-white/20 backdrop-blur-sm border border-[#5E5EEDFF] rounded-full"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex gap-2">
+          <h4 className="text-sm font-light  ">
+            {user?.title}
+          </h4>
+          <div className="flex gap-2 mt-6">
             <button
               className="flex-1 py-1.5 bg-[#5E5EEDFF] rounded-lg text-xs font-medium transition-all cursor-pointer"
               onClick={() => handleSendInterest("Interested", user?._id)}

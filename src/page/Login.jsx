@@ -1,4 +1,4 @@
-import LoginForm from "./LoginForm";
+import LoginForm from "../components/LoginForm";
 const Login = () => {
   return (
     <div className="min-h-screen w-full relative bg-[#171A1FFF]">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import DiscoverCard from "./DiscoverCard";
+import DiscoverCard from "../components/DiscoverCard";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
 import axios from "axios";

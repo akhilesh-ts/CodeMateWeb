@@ -1,5 +1,5 @@
 import axios from "axios";
-import ConnectionCard from "./ConnectionCard";
+import ConnectionCard from "../components/ConnectionCard";
 import { BASE_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
 

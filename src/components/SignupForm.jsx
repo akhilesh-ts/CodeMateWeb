@@ -9,7 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 
 const SignupForm = () => {
@@ -17,9 +17,12 @@ const SignupForm = () => {
     firstName: "",
     email: "",
     password: "",
+    title:""
   });
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const res = await axios.post(
         BASE_URL + "/signup",
@@ -27,10 +30,13 @@ const SignupForm = () => {
         { withCredentials: true }
       );
       console.log(res.data);
+      if (res.status === 201) {
+        navigate("/login");
+      }
     } catch (error) {
       console.log(error);
     }
-    e.preventDefault();
+
     console.log(formData);
   };
   return (
@@ -79,6 +85,25 @@ const SignupForm = () => {
                     }))
                   }
                   placeholder="m@example.com"
+                  required
+                />
+              </Field>
+              <Field>
+                <FieldLabel className="text-[#FAFAFBFF]" htmlFor="email">
+                  Title
+                </FieldLabel>
+                <Input
+                  className="bg-[#32374333] border-[#323743FF] border-solid rounded-[10px] text-[#DEE1E6FF]"
+                  
+                  type="text"
+                  value={formData.title}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      title: e.target.value,
+                    }))
+                  }
+                  placeholder="mern stack devloper"
                   required
                 />
               </Field>

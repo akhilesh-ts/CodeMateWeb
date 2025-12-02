@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
+import Login from "./page/Login";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import Request from "./components/Request";
+import Request from "./page/Request";
 import Profile from "./components/Profile";
-import Dashboard from "./components/Dashboard";
-import Overview from "./components/Overview";
-import Connections from "./components/Connections";
-import Home from "./components/Home";
+import Dashboard from "./page/Dashboard";
+import Overview from "./page/Overview";
+import Connections from "./page/Connections";
+import Home from "./page/Home";
 import { Toaster } from "@/components/ui/sonner";
-import Discover from "./components/Discover";
+import Discover from "./page/Discover";
 import Signup from "./page/Signup"
 
 function App() {
