@@ -1,90 +1,59 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { removeUser } from "../utils/slice/userSlice";
-import axios from "axios";
-import { BASE_URL } from "../utils/constants";
-import { removeFeeds } from "../utils/slice/feedSlice";
+import { CodeXml } from "lucide-react";
+import HeroSection from "./HeroSection";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const user = useSelector((store) => store.user);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleLogout = async() => {
-    try {
-       await axios.post(
-        BASE_URL + "/logout",
-        {},
-        { withCredentials: true }
-      );
-
-      dispatch(removeUser());
-      dispatch(removeFeeds())
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <>
-      <div className="navbar bg-base-300 shadow-sm px-8">
-        <div className="flex-1">
-          <Link to="/app" className="btn btn-ghost text-xl">
-            Code Mate
-          </Link>
-        </div>
-        <div className="flex gap-2">
-          {/* <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered w-24 md:w-auto"
-          /> */}
-          {user && (
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  />
-                </div>
+      {/* <div className="min-h-screen w-full bg-white relative px-3 md:px-7 py-3">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: "#ffffff",
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.35) 1px, transparent 0)",
+            backgroundSize: "20px 20px",
+          }}
+        />
+        <div className="relative z-10">
+          <div className=" flex items-center justify-between  ">
+            <div className="flex items-center gap-2 cursor-pointer">
+              <div className="bg-[#f48400] text-white flex aspect-square size-8 items-center justify-center rounded-lg">
+                <CodeXml className="size-4 font-bold" />
               </div>
-              <ul
-                tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-              >
-                <li>
-                  <Link to="/profile" className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/feed" className="justify-between">
-                    Feeds
-                    <span className="badge">New</span>
-                  </Link>
-                </li>
-                <li>
-                  <a>Settings</a>
-                </li>
-                <li>
-                  <a onClick={handleLogout}>Logout</a>
-                </li>
-              </ul>
+              <h1 className="font-bold text-lg md:text-2xl font-grotesk">
+                Code Matee
+              </h1>
             </div>
-          )}
+
+            <button className="bg-[#4255f4] px-3 py-1 md:px-4 md:py-2 rounded-lg text-white font-grotesk cursor-pointer">
+              Sign in
+            </button>
+          </div>
+          <div className="flex justify-center  w-full py-30 sm:h-[500px]">
+            <HeroSection />
+          </div>
         </div>
+      </div> */}
+
+      <div className=" flex items-center justify-between  ">
+        <div className="flex items-center gap-2 cursor-pointer">
+          <div className="bg-[#f48400] text-white flex aspect-square size-8 items-center justify-center rounded-lg">
+            <CodeXml className="size-4 font-bold" />
+          </div>
+          <h1 className="font-bold text-lg md:text-2xl font-grotesk">
+            Code Matee
+          </h1>
+        </div>
+
+        <Link to="/login">
+          <button className="bg-[#4255f4] px-3 py-1 md:px-4 md:py-2 rounded-lg text-white font-grotesk cursor-pointer">
+            Sign in
+          </button>
+        </Link>
       </div>
     </>
   );
 };
 
 export default NavBar;
-
-
